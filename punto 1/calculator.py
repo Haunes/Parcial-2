@@ -4,43 +4,43 @@ from LabeledExprParser import LabeledExprParser
 from LabeledExprVisitor import LabeledExprVisitor
 
 class ComplexNumber:
-    def __init__(self, real, imag):
+    def _init_(self, real, imag):
         self.real = real
         self.imag = imag
 
-    def __add__(self, other):
+    def _add_(self, other):
         if isinstance(other, ComplexNumber):
             return ComplexNumber(self.real + other.real, self.imag + other.imag)
         else:
             return ComplexNumber(self.real + other, self.imag)
 
-    def __sub__(self, other):
+    def _sub_(self, other):
         if isinstance(other, ComplexNumber):
             return ComplexNumber(self.real - other.real, self.imag - other.imag)
         else:
             return ComplexNumber(self.real - other, self.imag)
 
-    def __mul__(self, other):
+    def _mul_(self, other):
         if isinstance(other, ComplexNumber):
             return ComplexNumber(self.real * other.real - self.imag * other.imag,
                                  self.real * other.imag + self.imag * other.real)
         else:
             return ComplexNumber(self.real * other, self.imag * other)
 
-    def __truediv__(self, other):
+    def _truediv_(self, other):
         if isinstance(other, ComplexNumber):
-            denom = other.real**2 + other.imag**2
+            denom = other.real*2 + other.imag*2
             real = (self.real * other.real + self.imag * other.imag) / denom
             imag = (self.imag * other.real - self.real * other.imag) / denom
             return ComplexNumber(real, imag)
         else:
             return ComplexNumber(self.real / other, self.imag / other)
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.real} {'+' if self.imag >= 0 else '-'} {abs(self.imag)}i" if self.imag != 0 else str(self.real)
 
 class EvalVisitor(LabeledExprVisitor):
-    def __init__(self):
+    def _init_(self):
         self.memory = {}
 
     def visitPrintExpr(self, ctx):
@@ -111,19 +111,24 @@ class EvalVisitor(LabeledExprVisitor):
         imag = int(ctx.INT(1).getText()) * imag_sign
         return ComplexNumber(real, imag)
 
+
 def main():
-    while True:
-        try:
-            text = input('calc> ') + '\n'
-            lexer = LabeledExprLexer(InputStream(text))
-            stream = CommonTokenStream(lexer)
-            parser = LabeledExprParser(stream)
-            tree = parser.prog()
+    try:
+        with open('input.txt', 'r') as file:
+            for line in file:
+                text = line.strip() + '\n'
+                lexer = LabeledExprLexer(InputStream(text))
+                stream = CommonTokenStream(lexer)
+                parser = LabeledExprParser(stream)
+                tree = parser.prog()
 
-            visitor = EvalVisitor()
-            visitor.visit(tree)
-        except KeyboardInterrupt:
-            break
-
-if __name__ == '__main__':
+                visitor = EvalVisitor()
+                visitor.visit(tree)
+    except KeyboardInterrupt:
+        pass
+    except FileNotFoundError:
+        print("Error: El archivo 'input.txt' no se encontró.")
+    except Exception as e:
+        print(f"Error: {e}")
+if _name_ == '_main_':
     main()
