@@ -33,6 +33,16 @@ Para Ejecutar el punto 2:
   
   python3 filterfunc.py
   
+Para ejecutar el punto 3:
+
+Para ejecutar el punto 3 vaya a la ubicacion donde descargo el archivo y escriba python calcFunciones.py de esa manera se realizara la transformada de fourier
+para realizar con valores diferentes vaya al archivo de texto formula.txt y escriba funcion_que_desea_evaluar*exp(w*j*t)
+
+por ejemplo
+
+sin(t)*exp(-2*pi*3.14j*t)
+sin(2)*exp(-2*pi*3.14j*2)
+sin(t)*exp(w*j*t)
 
 
 *Soluciones:
