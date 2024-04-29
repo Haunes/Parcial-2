@@ -1,0 +1,16 @@
+T__0=1
+T__1=2
+INTEGRAL=3
+DOT=4
+LPAREN=5
+RPAREN=6
+ID=7
+WS=8
+EXP=9
+'sin'=1
+'cos'=2
+'∫'=3
+'.'=4
+'('=5
+')'=6
+'e^'=9
