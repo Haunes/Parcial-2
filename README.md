@@ -33,6 +33,12 @@ Para Ejecutar el punto 2:
   
   python3 filterfunc.py
   
+
+*Soluciones:
+  1) Acualizacion antlr4
+
+pip3 install --upgrade antlr4-python3-runtime
+
 Para ejecutar el punto 3:
 
 Para ejecutar el punto 3 vaya a la ubicacion donde descargo el archivo y escriba python calcFunciones.py de esa manera se realizara la transformada de fourier
@@ -44,8 +50,3 @@ sin(t)*exp(-2*pi*3.14j*t)
 sin(2)*exp(-2*pi*3.14j*2)
 sin(t)*exp(w*j*t)
 
-
-*Soluciones:
-  1) Acualizacion antlr4
-
-pip3 install --upgrade antlr4-python3-runtime
