@@ -47,6 +47,8 @@ para realizar con valores diferentes vaya al archivo de texto formula.txt y escr
 por ejemplo
 
 sin(t)*exp(-2*pi*3.14j*t)
+
 sin(2)*exp(-2*pi*3.14j*2)
+
 sin(t)*exp(w*j*t)
 
